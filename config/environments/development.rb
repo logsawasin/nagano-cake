@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+config.hosts << "89d9a23293394e1eb1c274457407274a.vfs.cloud9.ap-northeast-1.amazonaws.com"
+config.active_job.queue_adapter = :inline
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
