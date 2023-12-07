@@ -1,0 +1,15 @@
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  <h4>商品名</h4>
+  <%= f.text_field :name %>
+  
+  <h4>説明文</h4>
+  <%= f.text_field :text %>
+  
+  <h4>金額</h4>
+  <%= f.text_field :without_tax_price %>
+  
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  
+  <%= f.submit '保存' %>
+<% end %>
