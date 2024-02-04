@@ -10,30 +10,80 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-   <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "マイページ", customers_my_page_path %>
-      </li>
-      <li>
-        <%= link_to "商品一覧", items_path %>
-      </li>
-      <li>
-        <%= link_to "カート", cartitems_path %>
-      </li>
-       <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-   </header>
-    <%= yield %>
-  </body>
+ </head>
+ <body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <div class="collapse navbar-collapse" id=navbarNavDropdown>
+            <ul class="navbar-nav ml-auto">
+                <% if customer_signed_in? %>
+                <li>
+                    <%= link_to customers_my_page_path, class:'nav-link text-light' do %>
+                        <i class="fas fa-home"></i>
+                        マイページ
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to items_path, class:'nav-link text-light' do %>
+                        <i class="fa-solid fa-users"></i>
+                        商品一覧
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to cartitems_path, class:'nav-link text-light' do %>
+                        <i class="fa-solid fa-book-open"></i>
+                        カート
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to destroy_customer_session_path,method: :delete,  class:'nav-link text-light' do %>
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        ログアウト
+                    <% end %>
+                </li>
+                <% else %>
+                   <li>
+                       <%= link_to about_path, class:'nav-link text-light' do %>
+                       <i class="fa-solid fa-home"></i>
+                       About
+                       <% end %>
+                   </li>
+                   <li>
+                       <%= link_to items_path, class:'nav-link text-light' do %>
+                       <i class="fa-solid fa-link"></i>
+                       商品一覧
+                       <% end %>
+                   </li>
+                   <li>
+                       <%= link_to  new_customer_registration_path, class:'nav-link text-light' do %>
+                       <i class="fa-solid fa-user-plus"></i>
+                       新規登録
+                       <% end %>
+                   </li>
+                   <li>
+                       <%= link_to new_customer_session_path, class:'nav-link text-light' do %>
+                       <i class="fa-solid fa-sign-in-alt"></i>
+                       ログイン
+                       <% end %>
+                   </li>
+                <% end %>
+            </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<main>
+  <%= yield %>
+</main>
+<footer>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="mx-auto">
+                <p>CopyRight Infratop.inc</p>
+            </div>
+        </div>
+    </div>
+ </body>
 </html>

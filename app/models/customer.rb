@@ -5,4 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :cartitems
+  has_many :orders
+    def is_deleted?
+     self.deleted_at.present?
+    end
 end

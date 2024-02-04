@@ -59,6 +59,7 @@
   <%= f.hidden_field :post_code, value: @order.post_code %>
   <%= f.hidden_field :total_money, value: @sum + 800%>
   <%= f.hidden_field :address_name, value: @order.address_name%>
+  <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
   <%= f.hidden_field :name, value: @order.name %>
   <%= f.submit "注文を確定する" %>
 <% end %>

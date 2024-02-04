@@ -1,9 +1,15 @@
 
 <div>
-  <p>姓：<%= @customer.first_name %></p>
-  <p>名: <%= @customer.last_name %></p>
-  <p>郵便番号: <%= @customer.post_code %></p>
-  <p>住所: <%= @customer.address %></p>
-  <p>電話番号: <%= @customer.telephone_number %></p>
-  <p><%= link_to "プロフィール編集",customers_edit_path %></p>
+  <table>
+    <tr>
+     <td>姓：<%= @customer.first_name %></td>
+     <td>名: <%= @customer.last_name %></td>
+     <td>郵便番号: <%= @customer.post_code %></td>
+     <td>住所: <%= @customer.address %></td>
+     <td>電話番号: <%= @customer.telephone_number %></td>
+    </tr>
+  <tr>
+    <td><%= link_to "プロフィール編集",customers_edit_path %></td>
+    <td><h2>注文履歴</h2><%= link_to "一覧を見る",orders_path %></td>
+  </tr>
 </div>

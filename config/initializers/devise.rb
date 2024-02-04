@@ -174,7 +174,7 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  # config.rememberable_options = {}
+   config.rememberable_options = {}
 
   # ==> Configuration for :validatable
   # Range for password length.
@@ -271,6 +271,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  # config.orm :active_record
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration

@@ -5,15 +5,16 @@ class Public::CartitemsController < ApplicationController
         @total = 0
     end
     
-    def create
-        if Item.find_by(name:"モンブラン")
-            
-        @cart_item = Cartitem.new(cart_item_params)
-        @cart_item.customer_id = current_customer.id
-        @cart_item.save
-        redirect_to cartitems_path
-        end
+  def create
+    @cart_item = Cartitem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    if @cart_item.save
+      redirect_to cartitems_path, notice: "カートにアイテムを追加しました"
+    else
+      flash[:error] = "カートにアイテムを追加できませんでした"
+      render :index
     end
+  end
     
     def update
         @cart_item = Cart_item.find(params[:id])

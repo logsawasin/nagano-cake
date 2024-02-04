@@ -12,7 +12,7 @@ protected
     return if !@customer
     
     if @customer.valid_password?(params[:customer][:password])
-     if @customer.is_deleted
+     if @customer.is_status?
       redirect_to  new_customer_registration_path
      else
      end
