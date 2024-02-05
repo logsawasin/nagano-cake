@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   
   
   
-  devise_for :admins
+
 #   get 'admin_sessions/new'
 #   get 'admin_sessions/create'
 #   get 'admin_sessions/destroy'
 #   resources :comments
-#   devise_for :admin,skip: [:registrations, :passwords], controllers: {
-#     sessions: "admin/sessions"
-#   }
+   devise_for :admin,skip: [:registrations, :passwords], controllers: {
+     sessions: "admin/sessions"
+   }
 root to: "public/homes#top"
 get 'about' => 'public/homes#about'
 get 'customers/my_page' => 'public/customers#show'
