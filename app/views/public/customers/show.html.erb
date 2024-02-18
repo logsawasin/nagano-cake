@@ -1,15 +1,14 @@
 
 <div>
   <table>
-    <tr>
-     <td>姓：<%= @customer.first_name %></td>
-     <td>名: <%= @customer.last_name %></td>
-     <td>郵便番号: <%= @customer.post_code %></td>
-     <td>住所: <%= @customer.address %></td>
-     <td>電話番号: <%= @customer.telephone_number %></td>
-    </tr>
+    <tr><th>氏名</th><td><%= @customer.first_name %><span>　</span><%= @customer.last_name %></td></tr>
+    <tr><th>カナ</th><td><%= @customer.first_name_kana %><span>　</span><%= @customer.last_name_kana %></td></tr>
+    <tr><th>郵便番号</th><td><%= @customer.post_code %></td></tr>
+    <tr><th>住所</th><td><%= @customer.address %></td></tr>
+    <tr><th>電話番号</th><td><%= @customer.telephone_number %></td></tr>
   <tr>
     <td><%= link_to "プロフィール編集",customers_edit_path %></td>
     <td><h2>注文履歴</h2><%= link_to "一覧を見る",orders_path %></td>
   </tr>
+ </table>
 </div>

@@ -8,9 +8,9 @@ class CreateOrderItems < ActiveRecord::Migration[6.1]
 
       t.integer :order_id, null: false
 
-      t.integer :quantity
+      t.integer :quantity, null: false
 
-      t.integer :tax_included_price
+      t.integer :tax_included_price, null: false
 
       t.integer :price, null: false
 

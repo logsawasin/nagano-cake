@@ -33,9 +33,10 @@ devise_for :customers,skip: [:passwords], controllers: {
  
  resources :admin_sessions, only: [:new, :create, :destroy]
  namespace:admin do 
+  get 'top' => 'homes#top', as: 'top'
   resources :items
-  resources :customers
-  get 'admin/orders' => 'admin/orders'
+  resources :customers, only: [:index, :show, :edit, :update]
+  get 'admin/orders' => 'orders#show'
  end
 
 end

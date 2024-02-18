@@ -6,13 +6,10 @@ class Public::OrdersController < ApplicationController
     
     def confirmation
       @order = Order.new(order_params)
-      if params[:order][:select_address] == "0"
-        @order.post_code = current_customer.post_code
-        @order.shipping_address = current_customer.shipping_address
-        @order.address_name = current_customer.first_name + current_customer.last_name
-      end
+      @order.post_code = current_customer.post_code
+      @order.shipping_address = current_customer.address
+      @order.address_name = current_customer.first_name + current_customer.last_name
       @cart_items = current_customer.cartitems
-      render :confirmation
     end
     
     def create
@@ -39,6 +36,7 @@ class Public::OrdersController < ApplicationController
     end
     
     def show
+      @order = current_customer.orders.find(params[:id])
     end
     
     private

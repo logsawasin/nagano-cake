@@ -1,11 +1,10 @@
 class OrderItem < ApplicationRecord
     attr_accessor :manufacture_status
     belongs_to :order
-  def price
-    original_price = self.item.price
-    tax_included_price = original_price * (1 + self.item.tax_rate)
-    
-    return tax_included_price
+    belongs_to :item
+  
+  def subtotal
+    price * quantity
   end
   
   def price=(value)

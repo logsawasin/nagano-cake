@@ -16,7 +16,7 @@
         <%= cart_item.item.name %>
       </td>
       <td><%= cart_item.item.without_tax_price %></td>
-      <td><%= cart_item.quantity %></td>]
+      <td><%= cart_item.quantity %></td>
       <% @sum += cart_item.subtotal %>
       <td><%= @sum %></td>
     </tr>
@@ -46,8 +46,7 @@
   <tr>
     <th>お届け先</th>
     <td>
-      <%= @order.address_name %>
-      <%= @order.name %>
+      <%= @order.address_display %>
     </td>
   </tr>
 </table>
