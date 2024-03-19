@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
     belongs_to :item
   
   def subtotal
-    price * quantity
+    tax_included_price * quantity
   end
   
   def price=(value)

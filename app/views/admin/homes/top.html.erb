@@ -1,4 +1,28 @@
-<% @orders.each do |order| %>
-<table>
-  <tr><th>購入日時</th><td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td></tr>
-<% end %>
+<div class="container">
+    <h2>注文履歴一覧</h2>
+      <div class="row text-center">
+          <table>
+              <thead>
+                  <tr>
+                      <th>購入日時</th>
+                      <th>購入者</th>
+                      <th>注文個数</th>
+                  </tr>
+      </div>
+             </thead>
+          <div class="row text-center">
+              <tbody>
+                  <% @orders.each do |orders| %>
+                    <tr>
+                        <td><%= link_to orders.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_admin_orders_path %></td>
+                        <td><%= orders.customer.full_name %></td>
+                        <% orders.order_items.each do |order_item| %>
+                        <% @order_item+= order_item.quantity %>
+                        <% end %>
+                        <td><%= @order_item %></td>
+                    </tr>
+                  <% end %>
+              </tbody>
+              </table>
+          </div>
+</div>

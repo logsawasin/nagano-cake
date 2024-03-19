@@ -21,8 +21,8 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderItem.new
       @order_details.order_id = @order.id
       @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price
-      @order_details.number = cart_item.quantity
+      @order_details.tax_included_price = cart_item.item.price
+      @order_details.quantity = cart_item.quantity
       @order_details.manufacture_status = 0
       @order_details.save!
     end
@@ -36,7 +36,8 @@ class Public::OrdersController < ApplicationController
     end
     
     def show
-      @order = current_customer.orders.find(params[:id])
+      @order = Order.find(params[:id])
+      @order_items = @order.order_items
     end
     
     private

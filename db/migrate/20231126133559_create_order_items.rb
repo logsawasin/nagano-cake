@@ -12,10 +12,6 @@ class CreateOrderItems < ActiveRecord::Migration[6.1]
 
       t.integer :tax_included_price, null: false
 
-      t.integer :price, null: false
-
-      t.integer :number, null: false
-
       t.timestamps
 
     end

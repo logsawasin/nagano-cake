@@ -1,16 +1,36 @@
 <h1>注文履歴詳細</h1>
-<table>
-    <div　class = col-sm-8>
+<div class="container">
+  <div class ="row">
+    <div class ="col-md-6">
+      <h2>注文情報</h2>
+      <table>
         <tr><th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td></tr>
         <tr><th>配送先</th><td><%= @order.address_display %></td></tr>
         <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
+      </table>
     </div>
-</table>
-<table>
-    <div class= col-sm->
-    <th>請求情報</th>
-         <tr><th>商品合計</th><td><%= @order.order_items.sum(&:subtotal) %></td></tr>
-         <tr><th>配送料</th></tr>
-         <tr><th>ご請求額</th><td><%= @order.total_money %></td></tr>
+    
+    <div class ="row-md-6">
+      <h2>請求情報</h2>
+      <table>
+        <tr><th>商品合計</th><td><%= @order.order_items.sum(&:subtotal) %></td></tr>
+        <tr><th>配送料</th></tr>
+        <tr><th>ご請求額</th><td><%= @order.total_money %></td></tr>
+      </table>
     </div>
-</table>
+  </div>
+  
+  <div class="row">
+    <h2>注文内容</h2>
+    <div class="col-md-12">
+      <table>
+        <%  @order_items.each do |order_item| %>
+          <tr><th>商品</th><td><%= order_item.item.name %></td></tr>
+          <tr><th>単価(税込)</th><td><%= order_item.tax_included_price %></td></tr>
+          <tr><th>個数</th><td><%= order_item.quantity %></td></tr>
+          <tr><th>小計</th><td><%= order_item.subtotal %></td></tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

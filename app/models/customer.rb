@@ -9,4 +9,8 @@ class Customer < ApplicationRecord
     def is_deleted?
      self.deleted_at.present?
     end
+    
+    def full_name
+       first_name + last_name
+    end
 end

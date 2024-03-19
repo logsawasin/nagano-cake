@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+    validates :image, presence: true
+    
     
     def price
        with_tax_price
