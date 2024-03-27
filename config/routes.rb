@@ -25,18 +25,17 @@ devise_for :customers,skip: [:passwords], controllers: {
  
  scope module: :public do
   resources :items, only: [:index, :show]
-  resources :cartitems,  only: [:create, :update, :destroy]
-   resources :cartitems,  only: [:index]
+  resources :cartitems,  only: [:create, :update, :destroy, :index]
    post 'orders/confirmation' => 'orders#confirmation'
-  resources :orders
  end
+ resources :orders
  
  resources :admin_sessions, only: [:new, :create, :destroy]
  namespace:admin do 
   get 'top' => 'homes#top', as: 'top'
   resources :items
   resources :customers, only: [:index, :show, :edit, :update]
-  get 'admin/orders' => 'orders#show'
+  resources :orders, only: [ :show]
  end
 
 end

@@ -7,8 +7,11 @@ class Public::CartItemsController < ApplicationController
     
     def create
         @cart_item = Cart_item.new(cart_item_params)
-        @cart_item.save
-        redirect_to cart_items_path(cart_item.id)
+        if @cart_item.save
+          redirect_to cart_items_path(cart_item.id)
+        else
+            render :index
+        end
     end
     
     def update

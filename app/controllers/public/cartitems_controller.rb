@@ -1,18 +1,25 @@
 class Public::CartitemsController < ApplicationController
     def index
         @customer = current_customer
-        @cart_items = current_customer.cartitems.all
+        @cart_items = @customer.cartitems
         @total = 0
     end
     
   def create
     @cart_item = Cartitem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
+    @cart_items=current_customer.cartitems.all
+    @cart_items.each do |cart_item|
+      if cart_item.item_id==@cart_item.item_id
+        new_quantity = cart_item.quantity + @cart_item.quantity
+        cart_item.update_attribute(:quantity, new_quantity)
+        @cart_item.delete
+        redirect_to cartitems_path, notice: "カートにアイテムを追加しました"
+      end
+    end
+      
     if @cart_item.save
       redirect_to cartitems_path, notice: "カートにアイテムを追加しました"
-    else
-      flash[:error] = "カートにアイテムを追加できませんでした"
-      render :index
     end
   end
     

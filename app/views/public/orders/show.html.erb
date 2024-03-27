@@ -24,11 +24,19 @@
     <h2>注文内容</h2>
     <div class="col-md-12">
       <table>
+        <thead>
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </thead>
         <%  @order_items.each do |order_item| %>
-          <tr><th>商品</th><td><%= order_item.item.name %></td></tr>
-          <tr><th>単価(税込)</th><td><%= order_item.tax_included_price %></td></tr>
-          <tr><th>個数</th><td><%= order_item.quantity %></td></tr>
-          <tr><th>小計</th><td><%= order_item.subtotal %></td></tr>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.tax_included_price %></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= order_item.subtotal %></td>
+          </tr>
         <% end %>
       </table>
     </div>

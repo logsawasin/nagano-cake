@@ -18,6 +18,14 @@ protected
      end
     end
  end
+ 
+ def after_sign_in_path_for(resourse)
+  customers_my_page_path
+ end
+ 
+ def after_sign_out_path_for(resourse)
+  root_path
+ end 
   # GET /resource/sign_in
   # def new
   #   super
