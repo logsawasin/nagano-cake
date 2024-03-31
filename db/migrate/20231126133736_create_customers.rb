@@ -13,7 +13,7 @@ class CreateCustomers < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
       
-        t.boolean :is_status
+        t.boolean :is_status, default: true
         t.string :last_name
         t.string :first_name
         t.string :last_name_kana

@@ -10,6 +10,14 @@ class Customer < ApplicationRecord
      self.deleted_at.present?
     end
     
+    def customer_status
+     if is_status == true
+      "有効"
+     else
+      "退会"
+     end
+    end
+    
     def full_name
        first_name + last_name
     end

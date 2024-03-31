@@ -12,15 +12,14 @@ protected
     return if !@customer
     
     if @customer.valid_password?(params[:customer][:password])
-     if @customer.is_status?
+     if !@customer.is_status?
       redirect_to  new_customer_registration_path
-     else
      end
     end
  end
  
  def after_sign_in_path_for(resourse)
-  customers_my_page_path
+  root_path
  end
  
  def after_sign_out_path_for(resourse)

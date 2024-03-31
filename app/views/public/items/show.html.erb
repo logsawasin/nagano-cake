@@ -12,11 +12,11 @@
 
 <h2>値段</h2> 
  <p><%= @item.without_tax_price %></p>
- 
+ <% if customer_signed_in? %>
  <%= f.hidden_field :item_id, :value => @item.id %>
  <%= f.select :quantity, *[1..9] %>
- 
- <%= f.submit 'カートに入れる' %>
+   <%= f.submit 'カートに入れる' %>
+  <% end %>
  <% end %>
  
  

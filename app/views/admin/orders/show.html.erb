@@ -9,6 +9,7 @@
               </table>
       </div>
       <div class="row">
+       <div class="col-lg-9">
           <table>
             <thead>
               <tr>
@@ -28,6 +29,8 @@
               </tr>
             <% end %>
           </tbody>
+       </div>
+       <div class="col-lg-3">
           <tbody>
             <% @sum = 0 %>
             <% @order_items.each do |order_item| %>
@@ -37,6 +40,7 @@
               <tr><th>請求金額合計</th><td><%= @sum + 800 %></td></tr>
             <% end %>
           </tbody>
+      </div>
          </table>
-      </div>  
+     </div>
 </div>

@@ -24,10 +24,10 @@ class Public::CartitemsController < ApplicationController
   end
     
     def update
-        @cart_item = Cart_item.find(params[:id])
+        @cart_item = Cartitem.find(params[:id])
         @cart_item.update(cart_item_params)
         flash[:notice] = "変更されました！"
-        redirect_to cart_items_path(cart_item.id)
+        redirect_to cartitems_path
     end
     
     def destroy
@@ -35,6 +35,11 @@ class Public::CartitemsController < ApplicationController
         @cart_item.destroy
         redirect_to '/cartitems'
     end
+    
+     def destroy_all
+       current_customer.cartitems.destroy_all
+       redirect_to cartitems_path, notice: 'カートが空になりました。' 
+     end
     
     private
     def cart_item_params

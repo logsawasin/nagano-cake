@@ -25,10 +25,12 @@ devise_for :customers,skip: [:passwords], controllers: {
  
  scope module: :public do
   resources :items, only: [:index, :show]
+  delete '/cartitems/destroy_all' => 'cartitems#destroy_all', as: 'destroy_all_cartitems'
   resources :cartitems,  only: [:create, :update, :destroy, :index]
    post 'orders/confirmation' => 'orders#confirmation'
+   resources :orders
  end
- resources :orders
+ 
  
  resources :admin_sessions, only: [:new, :create, :destroy]
  namespace:admin do 
